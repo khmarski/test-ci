@@ -17,6 +17,7 @@ pipeline {
                 echo " ============== start building image =================="
                 dir ('/var/jenkins_home/shara') {
                 	sh 'docker build -t test_image:1.0 . '
+                        sh 'sh "docker run -d --name test_image:1.0'
                 }
             }
         }
