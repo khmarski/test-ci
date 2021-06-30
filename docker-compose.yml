@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  jenkins:
+    image: khmarski/test-jks:1.2
+    container_name: jenkins
+    hostname: jenkins
+    user: root
+    ports:
+     - "8080:8080"
+    volumes:
+     - ./shara:/var/jenkins_home/share
+     - /var/run/docker.sock:/var/run/docker.sock
+     - jenkins-data:/var/jenkins_home
+     - jenkins-docker-certs:/certs/client:ro
+#  artifactory:
+#    image: docker.bintray.io/jfrog/artifactory-oss:latest
+#    container_name: artifactory
+#    hostname: artifactory
+#    ports:
+#     - "8081:8081"
+#     - "8082:8082"
+#    volumes:
+#     - "artifactory:/var/opt/jfrog/artifactory"  
+volumes:
+  jenkins-data:
+  jenkins-docker-certs:
+#  artifactory:  
